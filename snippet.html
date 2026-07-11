@@ -104,6 +104,15 @@
     margin-top:0;
     margin-bottom:24px;
   }
+  p.lib-note{
+    background:var(--sage-light);
+    color:var(--sage-dark);
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:0.88rem;
+    margin:0 0 20px;
+  }
+  p.lib-note a{ color:var(--sage-dark); font-weight:700; }
 
   .card{
     background:var(--white);
@@ -133,6 +142,21 @@
   }
   .tag.blue{ background:var(--sky-light); color:#3d6b7d; }
   .tag.sand{ background:var(--sand); color:#8a6d3f; }
+  a.cite{
+    display:inline-block;
+    margin-top:8px;
+    font-size:0.76rem;
+    color:var(--sage-dark);
+    text-decoration:none;
+    border-bottom:1px dotted var(--sage);
+  }
+  a.cite:hover{ color:var(--ink); }
+  p.cite-line{
+    margin:10px 0 0;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  p.cite-line a{ color:var(--sage-dark); }
 
   /* Home grid */
   .grid{
@@ -223,7 +247,7 @@
   }
 
   /* Quick tips */
-  .tip-list .card{ display:flex; gap:14px; align-items:flex-start; }
+  .tip-list .card{ display:flex; gap:16px; align-items:flex-start; }
   .tip-icon{
     font-size:1.5rem;
     background:var(--sage-light);
@@ -232,6 +256,15 @@
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
+  .mascot{
+    width:76px; height:76px;
+    flex-shrink:0;
+    background:var(--sage-light);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    padding:6px;
+  }
+  .mascot svg{ width:100%; height:100%; }
 
   /* Videos */
   .video-card{
@@ -251,6 +284,8 @@
   .video-thumb.thumb-1{ background:linear-gradient(135deg, #a8c8d8 0%, #7c9a82 100%); }
   .video-thumb.thumb-2{ background:linear-gradient(135deg, #f3c98b 0%, #e8956f 100%); }
   .video-thumb.thumb-3{ background:linear-gradient(135deg, #b7d9a8 0%, #6fae8f 100%); }
+  .video-thumb.thumb-4{ background:linear-gradient(135deg, #cbb7e0 0%, #8a7bc4 100%); }
+  .video-thumb.thumb-5{ background:linear-gradient(135deg, #f0b7c4 0%, #d97ba0 100%); }
   .thumb-emoji{ font-size:3.2rem; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.15)); }
   .play-badge{
     position:absolute; bottom:10px; right:12px;
@@ -291,6 +326,27 @@
     font-size:0.78rem;
     color:var(--ink-soft);
   }
+  .social-card.sticky-form{
+    background:linear-gradient(160deg, #fff7dc, var(--white));
+  }
+  .social-card.sticky-form textarea{
+    min-height:70px;
+    margin-bottom:10px;
+  }
+  .social-card.sticky-form input[type=text]{
+    width:100%;
+    border-radius:10px;
+    border:1px solid #ddd8c8;
+    padding:8px 10px;
+    font-family:inherit;
+    font-size:0.85rem;
+    margin-bottom:10px;
+  }
+  .board-note{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
 
   /* Reflection */
   textarea{
@@ -304,6 +360,9 @@
     resize:vertical;
   }
   .save-note{ font-size:0.82rem; color:var(--ink-soft); margin-top:6px; }
+  .proscons{ display:flex; gap:14px; flex-wrap:wrap; }
+  .proscons > div{ flex:1; min-width:200px; }
+  .proscons label{ display:block; font-size:0.82rem; font-weight:700; color:var(--sage-dark); margin-bottom:6px; }
 
   footer{
     text-align:center;
@@ -325,13 +384,51 @@
     color:var(--sage-dark);
   }
   details.resource ul{ margin:12px 0 4px; padding-left:20px; }
+
+  /* Destress strip (end of section resources) */
+  .destress-strip{
+    margin-top:28px;
+    padding:18px 20px;
+    background:var(--sand);
+    border-radius:var(--radius);
+    border:1px dashed #d8cdb2;
+  }
+  .destress-strip h4{
+    margin:0 0 10px;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:#8a6d3f;
+  }
+  .destress-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .destress-links a{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:var(--white);
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:0.82rem;
+    color:var(--ink);
+    text-decoration:none;
+    box-shadow:var(--shadow);
+  }
+  .destress-links a:hover{ color:var(--sage-dark); }
+
+  @media (max-width:640px){
+    .tip-list .card{ flex-direction:column; align-items:center; text-align:center; }
+  }
 </style>
 </head>
 <body>
 
 <header>
   <h1>🧘 Teacher Support Toolkit 🧘</h1>
-  <p>Stress-reduction and well-being resources for K-12 educators — explore in any order, at your own pace.</p>
+  <p>Stress-reduction and well-being resources for K-12 educators! Welcome, explore in any order, at your own pace.</p>
 </header>
 
 <nav id="mainNav">
@@ -351,8 +448,8 @@
   <section id="home" class="view active">
     <img class="section-photo" style="object-position:center 35%;" src="https://images.pexels.com/photos/5905481/pexels-photo-5905481.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Teacher smiling and talking with students">
     <div class="welcome-banner">
-      <h2 style="margin-top:0;">Welcome, educator 👋</h2>
-      <p style="margin-bottom:0;">This toolkit was built for K-12 public school teachers navigating the stress and demands of the profession. There's no required order and no pressure to finish everything — browse whatever feels relevant to you right now. Start with the self-assessment if you're not sure where to begin, or jump straight into a section below.</p>
+      <h2 style="margin-top:0;">Welcome, Educators 👋</h2>
+      <p style="margin-bottom:0;">This toolkit was built for K-12 school teachers who are navigating the stress and demands of the workplace. There's no required order and no pressure to finish everything. Please browse whatever you feel resonates with you right now. We suggest starting with the self-assessment if you're not sure where to start, or just jump straight into a section below.</p>
     </div>
     <h2 class="section-title">Explore the toolkit</h2>
     <p class="section-sub">Every section stands alone — pick what fits your day.</p>
@@ -365,6 +462,16 @@
       <div class="tile" data-view="social"><span class="emoji">💬</span><h4>Wellness Bites</h4><p>Bite-sized, shareable reminders for tough days.</p></div>
       <div class="tile" data-view="reflect"><span class="emoji">🖊️</span><h4>Reflection Journal</h4><p>Optional prompts to process what you're noticing.</p></div>
     </div>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
+    </div>
   </section>
 
   <!-- SELF-ASSESSMENT -->
@@ -375,7 +482,7 @@
     <div class="card">
       <form id="quizForm">
         <div class="quiz-q">
-          <p>1. I feel emotionally drained by the end of the school day.</p>
+          <p>1. I feel emotionally and mentally drained by the end of the school day.</p>
           <div class="scale" data-q="1">
             <label><input type="radio" name="q1" value="1"><span>Rarely</span></label>
             <label><input type="radio" name="q1" value="2"><span>Sometimes</span></label>
@@ -384,7 +491,7 @@
           </div>
         </div>
         <div class="quiz-q">
-          <p>2. I have control over how I structure my workday.</p>
+          <p>2. I have the feeling of full control over how I structure my workday.</p>
           <div class="scale" data-q="2">
             <label><input type="radio" name="q2" value="4"><span>Rarely</span></label>
             <label><input type="radio" name="q2" value="3"><span>Sometimes</span></label>
@@ -393,7 +500,7 @@
           </div>
         </div>
         <div class="quiz-q">
-          <p>3. Work stress follows me home and affects my personal time.</p>
+          <p>3. Work stress always follows me home and affects my personal time.</p>
           <div class="scale" data-q="3">
             <label><input type="radio" name="q3" value="1"><span>Rarely</span></label>
             <label><input type="radio" name="q3" value="2"><span>Sometimes</span></label>
@@ -402,7 +509,7 @@
           </div>
         </div>
         <div class="quiz-q">
-          <p>4. I feel supported by colleagues or administration.</p>
+          <p>4. I feel supported by colleagues, teammates, or administration.</p>
           <div class="scale" data-q="4">
             <label><input type="radio" name="q4" value="4"><span>Rarely</span></label>
             <label><input type="radio" name="q4" value="3"><span>Sometimes</span></label>
@@ -411,7 +518,7 @@
           </div>
         </div>
         <div class="quiz-q">
-          <p>5. I feel capable of handling the demands of my job.</p>
+          <p>5. I feel capable of handling any demands of my job.</p>
           <div class="scale" data-q="5">
             <label><input type="radio" name="q5" value="4"><span>Rarely</span></label>
             <label><input type="radio" name="q5" value="3"><span>Sometimes</span></label>
@@ -423,12 +530,23 @@
       </form>
       <div id="quizResult"></div>
     </div>
+    <div class="destress-strip">
+      <h4>Take a moment before you go</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
+    </div>
   </section>
 
   <!-- LIBRARY -->
   <section id="library" class="view">
     <h2 class="section-title">Well-Being Library</h2>
     <p class="section-sub">Short, research-informed reads — no more than a few minutes each.</p>
+    <p class="lib-note">Each article below draws on research connected to the <a href="https://selfdeterminationtheory.org/the-theory/" target="_blank" rel="noopener">Center for Self-Determination Theory</a> — most of the well-being framework used throughout this toolkit is grounded in that research.</p>
 
     <div class="card">
       <span class="tag">Education Week</span>
@@ -439,20 +557,37 @@
     <div class="card">
       <span class="tag blue">Simply Psychology</span>
       <h3><a href="https://www.simplypsychology.org/self-determination-theory.html" target="_blank" rel="noopener">The Three Needs Behind Motivation: Autonomy, Competence, Relatedness</a></h3>
-      <p>According to Self-Determination Theory, well-being at work depends on three psychological needs being met: autonomy (having choice in how you work), competence (feeling effective at what you do), and relatedness (feeling connected to others). When one of these is consistently frustrated — for example, having little say over your schedule — stress tends to build even if the workload itself hasn't changed. Naming which need feels unmet can help you target where to focus your energy.</p>
+      <p>According to Self-Determination Theory, well-being at work depends on three psychological needs being met: autonomy (having choice in how you work), competence (feeling effective at what you do), and relatedness (feeling connected to others). When one of these is consistently frustrated — for example, having little say over your schedule — stress tends to build even if the workload itself hasn't changed.</p>
     </div>
 
     <div class="card">
       <span class="tag sand">Next Gen Learning</span>
       <img class="card-photo" style="object-position:center 15%;" src="https://images.pexels.com/photos/31972444/pexels-photo-31972444.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Woman breathing in fresh air outdoors">
       <h3><a href="https://www.nextgenlearning.org/articles/educators-need-true-rest-and-recovery" target="_blank" rel="noopener">Why Rest Isn't Selfish</a></h3>
-      <p>Many educators equate rest with falling behind. But sustained performance requires recovery — physically and emotionally. Treating downtime as optional, rather than necessary, is one of the most common paths to burnout. Protecting even small pockets of rest during the summer can change how the next school year starts.</p>
+      <p>Many educators equate rest with falling behind. But sustained performance requires recovery — physically and emotionally. Treating downtime as optional, rather than necessary, is one of the most common paths to burnout.</p>
     </div>
 
     <div class="card">
       <span class="tag">Schools That Lead</span>
       <h3><a href="https://www.schoolsthatlead.org/blog/teacher-burnout-signs" target="_blank" rel="noopener">Recognizing the Early Signs of Emotional Exhaustion</a></h3>
-      <p>Emotional exhaustion often builds gradually: increased irritability, trouble sleeping, dreading tasks you used to enjoy, or feeling "touched out" by the end of the day. Catching these signs early — rather than waiting for a breaking point — makes it easier to intervene with small, sustainable changes.</p>
+      <p>Emotional exhaustion often builds gradually: increased irritability, trouble sleeping, dreading tasks you used to enjoy, or feeling "touched out" by the end of the day. Catching these signs early makes it easier to intervene with small, sustainable changes.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag blue">Center for Self-Determination Theory</span>
+      <h3><a href="https://selfdeterminationtheory.org/topics/application-education/" target="_blank" rel="noopener">The Overlooked Half of the Classroom: Teachers' Own Motivation</a></h3>
+      <p>Motivation research in schools has long focused on students, but teachers bring their own need for autonomy, competence, and connection into the classroom. When administrative control, rigid curricula, or a lack of support undermine those needs, teacher motivation suffers — and research shows that undermining ripples outward to affect students too. Schools that protect teachers' basic psychological needs tend to see benefits for everyone, academically and socially.</p>
+    </div>
+
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
     </div>
   </section>
 
@@ -463,39 +598,114 @@
     <img class="section-photo" src="https://images.pexels.com/photos/6353850/pexels-photo-6353850.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Hand squeezing a stress ball">
     <div class="tip-list">
       <div class="card">
-        <div class="tip-icon">🫁</div>
+        <div class="mascot">
+          <svg viewBox="0 0 100 100">
+            <ellipse cx="50" cy="58" rx="30" ry="28" fill="var(--sage)"/>
+            <circle cx="40" cy="52" r="3.2" fill="#3a3f3a"/>
+            <circle cx="60" cy="52" r="3.2" fill="#3a3f3a"/>
+            <circle cx="33" cy="62" r="4" fill="#e8956f" opacity="0.5"/>
+            <circle cx="67" cy="62" r="4" fill="#e8956f" opacity="0.5"/>
+            <path d="M42 66 Q50 71 58 66" stroke="#3a3f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M20 40 a20 20 0 0 1 60 0" stroke="#5f7d66" stroke-width="2.5" fill="none" stroke-dasharray="4 4"/>
+            <path d="M14 58 q-8 -4 -8 -12" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M86 58 q8 -4 8 -12" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div>
           <h3>Box Breathing (60 seconds)</h3>
           <p>Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. Repeat four times. This activates your parasympathetic nervous system and can be done at your desk between classes.</p>
+          <a class="cite" href="https://health.clevelandclinic.org/box-breathing-benefits" target="_blank" rel="noopener">Source: Cleveland Clinic</a>
         </div>
       </div>
       <div class="card">
-        <div class="tip-icon">🗣️</div>
+        <div class="mascot">
+          <svg viewBox="0 0 100 100">
+            <ellipse cx="46" cy="58" rx="28" ry="26" fill="var(--sage)"/>
+            <circle cx="37" cy="52" r="3" fill="#3a3f3a"/>
+            <circle cx="55" cy="52" r="3" fill="#3a3f3a"/>
+            <circle cx="30" cy="61" r="3.6" fill="#e8956f" opacity="0.5"/>
+            <path d="M40 65 Q46 68 52 64" stroke="#3a3f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M18 55 q-6 -8 -2 -16" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M74 50 q10 -4 16 2" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <rect x="66" y="24" width="30" height="20" rx="8" fill="#fff" stroke="#5f7d66" stroke-width="2"/>
+            <path d="M74 44 l-5 7 v-7" fill="#fff" stroke="#5f7d66" stroke-width="2"/>
+            <circle cx="75" cy="34" r="2" fill="#5f7d66"/>
+            <circle cx="82" cy="34" r="2" fill="#5f7d66"/>
+            <circle cx="89" cy="34" r="2" fill="#5f7d66"/>
+          </svg>
+        </div>
         <div>
           <h3>A Boundary Script You Can Reuse</h3>
-          <p>"I want to give this the attention it deserves — I can look at it tomorrow morning." Having a pre-written line ready makes it easier to protect your time in the moment, without needing to improvise an explanation.</p>
+          <p>"I want to give this my all — I should wait until tomorrow to give this the attention it deserves." Having a pre-written line ready makes it easier to protect your time in the moment, without needing to improvise an explanation.</p>
+          <a class="cite" href="https://www.sciencedaily.com/releases/2018/08/180810091553.htm" target="_blank" rel="noopener">Source: ScienceDaily, Virginia Tech study on after-hours email expectations</a>
         </div>
       </div>
       <div class="card">
-        <div class="tip-icon">🧹</div>
+        <div class="mascot">
+          <svg viewBox="0 0 100 100">
+            <ellipse cx="55" cy="58" rx="28" ry="26" fill="var(--sage)"/>
+            <circle cx="47" cy="52" r="3" fill="#3a3f3a"/>
+            <circle cx="63" cy="52" r="3" fill="#3a3f3a"/>
+            <circle cx="40" cy="61" r="3.6" fill="#e8956f" opacity="0.5"/>
+            <path d="M49 65 Q55 68 61 64" stroke="#3a3f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M30 70 l10 -34" stroke="#8a6d3f" stroke-width="4" stroke-linecap="round"/>
+            <path d="M25 40 l14 -6 l3 5 l-14 6z" fill="#8a6d3f"/>
+            <path d="M20 38 q6 -3 12 -1" stroke="#5f7d66" stroke-width="2" fill="none" stroke-dasharray="2 3"/>
+            <path d="M14 30 q6 -3 12 -1" stroke="#5f7d66" stroke-width="2" fill="none" stroke-dasharray="2 3"/>
+          </svg>
+        </div>
         <div>
           <h3>The 2-Minute Reset</h3>
-          <p>Clear one visible surface — your desk, inbox, or to-do list — for two minutes. Small, visible progress can lower the sense of being overwhelmed even when the underlying workload hasn't changed.</p>
+          <p>Set a timer and clear your surface — your desk, inbox, or to-do list — for two minutes. Short, visible progress can lower your sense of being overwhelmed even when the workload hasn't changed. Think, baby steps.</p>
+          <a class="cite" href="https://hbr.org/2011/05/the-power-of-small-wins" target="_blank" rel="noopener">Source: Harvard Business Review, "The Power of Small Wins"</a>
         </div>
       </div>
       <div class="card">
-        <div class="tip-icon">🚶</div>
+        <div class="mascot">
+          <svg viewBox="0 0 100 100">
+            <circle cx="78" cy="20" r="10" fill="#f3c98b"/>
+            <ellipse cx="45" cy="62" rx="26" ry="24" fill="var(--sage)"/>
+            <circle cx="38" cy="57" r="2.8" fill="#3a3f3a"/>
+            <circle cx="52" cy="57" r="2.8" fill="#3a3f3a"/>
+            <path d="M40 68 Q45 71 50 68" stroke="#3a3f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M28 84 l6 -14" stroke="#5f7d66" stroke-width="5" stroke-linecap="round"/>
+            <path d="M62 84 l-6 -14" stroke="#5f7d66" stroke-width="5" stroke-linecap="round"/>
+            <path d="M15 60 q6 6 4 16" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div>
-          <h3>Step Outside Between Periods</h3>
-          <p>Even 90 seconds of daylight and a change of scenery can interrupt a stress spiral. If you can't leave the building, a window or open door works too.</p>
+          <h3>Step Outside For a Moment</h3>
+          <p>Even 90 seconds of daylight or just a change of scenery can help interrupt a stress spiral. If you can't leave where you are, opening a window or a door helps too.</p>
+          <a class="cite" href="https://www.frontiersin.org/news/2019/04/09/20-minute-nature-pill-relieves-stress" target="_blank" rel="noopener">Source: Frontiers in Psychology, University of Michigan "nature pill" study</a>
         </div>
       </div>
       <div class="card">
-        <div class="tip-icon">✅</div>
+        <div class="mascot">
+          <svg viewBox="0 0 100 100">
+            <ellipse cx="50" cy="58" rx="28" ry="26" fill="var(--sage)"/>
+            <circle cx="42" cy="52" r="3" fill="#3a3f3a"/>
+            <circle cx="58" cy="52" r="3" fill="#3a3f3a"/>
+            <path d="M42 65 Q50 70 58 65" stroke="#3a3f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M70 40 q6 -3 12 -1" stroke="var(--sage)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="86" cy="34" r="13" fill="#fff" stroke="#5f7d66" stroke-width="2"/>
+            <path d="M80 34 l4 5 l8 -9" stroke="#5f7d66" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div>
           <h3>Name One Thing You Controlled Today</h3>
-          <p>At the end of the day, identify one decision you had autonomy over — even something small. This counters the feeling that the whole day happened "to" you.</p>
+          <p>At the end of the day, identify one decision you had autonomy over, even something small. This can counter the feeling that the whole day happened "to" you.</p>
+          <a class="cite" href="https://selfdeterminationtheory.org/the-theory/" target="_blank" rel="noopener">Source: Center for Self-Determination Theory</a>
         </div>
+      </div>
+    </div>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
       </div>
     </div>
   </section>
@@ -506,14 +716,14 @@
     <p class="section-sub">Brief video resources — swap in your own links or recordings here.</p>
 
     <div class="video-card">
-      <a href="https://www.youtube.com/watch?v=CyKhfUdOEgs" target="_blank" rel="noopener" class="video-thumb thumb-1">
-        <span class="thumb-emoji">🧘‍♀️</span>
+      <a href="https://youtu.be/TTXO5gZu10s" target="_blank" rel="noopener" class="video-thumb thumb-1">
+        <span class="thumb-emoji">🎓</span>
         <span class="play-badge">▶</span>
       </a>
       <div class="video-info">
-        <span class="dur">Guided meditation · Oxford Mindfulness Centre</span>
-        <h3 style="margin:4px 0;"><a href="https://www.youtube.com/watch?v=CyKhfUdOEgs" target="_blank" rel="noopener">Guided Body Scan Meditation</a></h3>
-        <p style="margin:0; color:var(--ink-soft);">A calming guided body scan led by Prof. Mark Williams of the Oxford Mindfulness Centre — do it seated at your desk or in your car before heading home.</p>
+        <span class="dur">Center for Self-Determination Theory</span>
+        <h3 style="margin:4px 0;"><a href="https://youtu.be/TTXO5gZu10s" target="_blank" rel="noopener">Well-Being in Education: A Self-Determination Theory Perspective</a></h3>
+        <p style="margin:0; color:var(--ink-soft);">Randall Curren discusses what a self-determination lens reveals about well-being for both students and the teachers supporting them.</p>
       </div>
     </div>
     <div class="video-card">
@@ -538,7 +748,39 @@
         <p style="margin:0; color:var(--ink-soft);">Simple grounding techniques you can use yourself and also teach to students during transitions.</p>
       </div>
     </div>
-    <p style="color:var(--ink-soft); font-size:0.85rem;">Links open on YouTube. Swap in your own recordings any time.</p>
+    <div class="video-card">
+      <a href="https://youtu.be/4gXjygi-doU" target="_blank" rel="noopener" class="video-thumb thumb-4">
+        <span class="thumb-emoji">💬</span>
+        <span class="play-badge">▶</span>
+      </a>
+      <div class="video-info">
+        <span class="dur">SDT Education Consortium</span>
+        <h3 style="margin:4px 0;"><a href="https://youtu.be/4gXjygi-doU" target="_blank" rel="noopener">Richard M. Ryan Discusses Motivation &amp; Wellness in Learners and Teachers</a></h3>
+        <p style="margin:0; color:var(--ink-soft);">Co-founder of Self-Determination Theory Richard Ryan on what supports both student and teacher wellness in the classroom.</p>
+      </div>
+    </div>
+    <div class="video-card">
+      <a href="https://youtu.be/N8Ya1dxmiBA" target="_blank" rel="noopener" class="video-thumb thumb-5">
+        <span class="thumb-emoji">🧩</span>
+        <span class="play-badge">▶</span>
+      </a>
+      <div class="video-info">
+        <span class="dur">Center for Self-Determination Theory</span>
+        <h3 style="margin:4px 0;"><a href="https://youtu.be/N8Ya1dxmiBA" target="_blank" rel="noopener">Supporting Students' Psychological Needs: K–12 Applications of Self-Determination Theory</a></h3>
+        <p style="margin:0; color:var(--ink-soft);">Practical, classroom-level ways to support autonomy, competence, and relatedness for K-12 students.</p>
+      </div>
+    </div>
+    <p style="color:var(--ink-soft); font-size:0.85rem;">Links open on YouTube. Swap in your own recordings any time. More SDT videos are available at <a href="https://selfdeterminationtheory.org/videos/" target="_blank" rel="noopener">selfdeterminationtheory.org/videos</a>.</p>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
+    </div>
   </section>
 
   <!-- GUIDES -->
@@ -556,6 +798,7 @@
         <li>Identify one person you can talk to about work stress</li>
         <li>Revisit the self-assessment in two weeks</li>
       </ul>
+      <p class="cite-line">Informed by <a href="https://www.nea.org/nea-today/all-news-articles/whats-causing-teacher-burnout" target="_blank" rel="noopener">NEA, "What's Causing Teacher Burnout?"</a></p>
     </details>
 
     <details class="resource">
@@ -566,40 +809,74 @@
         <li>Prepare a script for in-the-moment requests outside your capacity</li>
         <li>Revisit boundaries each grading period — they can change</li>
       </ul>
+      <p class="cite-line">Informed by <a href="https://www.sciencedaily.com/releases/2018/08/180810091553.htm" target="_blank" rel="noopener">ScienceDaily, Virginia Tech after-hours email study</a></p>
     </details>
 
     <details class="resource">
       <summary>Summer Self-Care Planning Template</summary>
       <ul>
-        <li>List 3 things that genuinely restore your energy</li>
+        <li>List 3 things that will likely restore your energy</li>
         <li>Block time for at least one per week over the summer</li>
         <li>Note any recurring summer obligations (summer school, second job) and plan recovery around them</li>
         <li>Set one intention for how you want to feel by the first day back</li>
       </ul>
+      <p class="cite-line">Informed by <a href="https://www.nea.org/nea-today/all-news-articles/make-educator-well-being-priority-now" target="_blank" rel="noopener">NEA, "Make Educator Well-Being a Priority Now"</a></p>
     </details>
 
     <details class="resource">
-      <summary>Autonomy, Competence & Relatedness Self-Check</summary>
+      <summary>Autonomy, Competence, and Relatedness Self-Check</summary>
       <ul>
         <li>Autonomy: Where do I have choice in my role? Where do I feel none?</li>
         <li>Competence: What is one thing I've gotten better at this year?</li>
         <li>Relatedness: Who do I feel genuinely connected to at work?</li>
       </ul>
+      <p class="cite-line">Based on <a href="https://selfdeterminationtheory.org/the-theory/" target="_blank" rel="noopener">Self-Determination Theory</a> (Deci &amp; Ryan)</p>
     </details>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
+    </div>
   </section>
 
   <!-- SOCIAL / WELLNESS BITES -->
   <section id="social" class="view">
     <h2 class="section-title">Wellness Bites</h2>
     <p class="section-sub">Short, shareable reminders — save the ones that resonate.</p>
+    <p class="lib-note">These reminders were written for this toolkit, inspired by the <a href="https://selfdeterminationtheory.org/the-theory/" target="_blank" rel="noopener">Center for Self-Determination Theory</a>. Add your own at the end of the board.</p>
     <img class="section-photo" style="object-position:center 20%;" src="https://images.pexels.com/photos/5905923/pexels-photo-5905923.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Smiling teacher connecting with a student">
-    <div class="social-grid">
-      <div class="social-card"><div class="bite-emoji">🍵</div><div class="quote">"You can't pour from an empty cup."</div><div class="handle">shared in the teachers' lounge</div></div>
-      <div class="social-card"><div class="bite-emoji">🌱</div><div class="quote">Progress over perfection — today counts even if it wasn't your best day.</div><div class="handle">taped inside a locker</div></div>
-      <div class="social-card"><div class="bite-emoji">😴</div><div class="quote">Rest is part of the work, not a break from it.</div><div class="handle">a counselor's reminder</div></div>
-      <div class="social-card"><div class="bite-emoji">🔌</div><div class="quote">You are allowed to log off.</div><div class="handle">from someone who used to answer emails at midnight</div></div>
-      <div class="social-card"><div class="bite-emoji">🚧</div><div class="quote">One boundary a week is still progress.</div><div class="handle">slow and steady</div></div>
-      <div class="social-card"><div class="bite-emoji">💛</div><div class="quote">Your worth isn't measured by your lesson plans.</div><div class="handle">worth repeating on the hard days</div></div>
+    <div class="social-grid" id="biteBoard">
+      <div class="social-card"><div class="bite-emoji">🍵</div><div class="quote">"You can't pour from an empty cup."</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">🌱</div><div class="quote">Progress over perfection — today counts even if it wasn't your best day.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">😴</div><div class="quote">Rest is part of the work, not a break from it.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">🔌</div><div class="quote">You are allowed to log off.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">🚧</div><div class="quote">One boundary a week is still progress.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">💛</div><div class="quote">Your worth isn't measured by your lesson plans.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">✨</div><div class="quote">Small progress still counts as progress.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">🌿</div><div class="quote">Competence grows with practice, not perfection.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">🤝</div><div class="quote">You don't have to carry this alone.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card"><div class="bite-emoji">☀️</div><div class="quote">Today is a new page, not a debt you owe yesterday.</div><div class="handle">@teachersupporttoolkit</div></div>
+      <div class="social-card sticky-form" id="biteFormCard">
+        <div class="bite-emoji">📌</div>
+        <input type="text" id="biteInput" placeholder="Write your own reminder..." maxlength="120">
+        <button type="button" class="primary" style="width:100%; margin-top:0;" onclick="addBite()">Pin it to the board</button>
+        <div class="board-note">Saved in your browser for now. Ask your site admin to connect a shared database so every teacher's note appears here for everyone.</div>
+      </div>
+    </div>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
     </div>
   </section>
 
@@ -611,13 +888,13 @@
 
     <div class="card">
       <h3>Prompt 1</h3>
-      <p>What is one thing from this toolkit that felt useful or relevant to you today?</p>
+      <p>What is one thing from this toolkit that felt useful or relevant to you today? Maybe something that will carry over into your daily use moving forward.</p>
       <textarea data-key="r1" placeholder="Write here..."></textarea>
       <div class="save-note">Saved automatically as you type.</div>
     </div>
     <div class="card">
       <h3>Prompt 2</h3>
-      <p>What's one small change you could make this week to reduce stress?</p>
+      <p>What's one small change you could make this week to reduce stress? Note 1 or 2 examples.</p>
       <textarea data-key="r2" placeholder="Write here..."></textarea>
       <div class="save-note">Saved automatically as you type.</div>
     </div>
@@ -626,6 +903,31 @@
       <p>Where do you feel you have the most autonomy right now — and where the least?</p>
       <textarea data-key="r3" placeholder="Write here..."></textarea>
       <div class="save-note">Saved automatically as you type.</div>
+    </div>
+    <div class="card">
+      <h3>Prompt 4</h3>
+      <p>Make a pros and cons list to visually note the good and the bad.</p>
+      <div class="proscons">
+        <div>
+          <label>Pros</label>
+          <textarea data-key="r4pros" placeholder="What's going well..."></textarea>
+        </div>
+        <div>
+          <label>Cons</label>
+          <textarea data-key="r4cons" placeholder="What's weighing on you..."></textarea>
+        </div>
+      </div>
+      <div class="save-note">Saved automatically as you type.</div>
+    </div>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
     </div>
   </section>
 
@@ -690,6 +992,33 @@
       try{ localStorage.setItem(key, ta.value); }catch(e){}
     });
   });
+
+  // Wellness Bites sticky note board (saved per-browser via localStorage)
+  const biteColors = ['🍵','🌱','😴','🔌','🚧','💛','✨','🌿','🤝','☀️','📝','🌼','💚','🌤️'];
+  function renderCustomBites(){
+    const saved = JSON.parse(localStorage.getItem('toolkit_customBites') || '[]');
+    document.querySelectorAll('.social-card.custom-bite').forEach(el => el.remove());
+    const formCard = document.getElementById('biteFormCard');
+    saved.forEach((text, i) => {
+      const div = document.createElement('div');
+      div.className = 'social-card custom-bite';
+      const emoji = biteColors[i % biteColors.length];
+      div.innerHTML = '<div class="bite-emoji">'+emoji+'</div><div class="quote"></div><div class="handle">added by a teacher, saved on this device</div>';
+      div.querySelector('.quote').textContent = text;
+      formCard.parentNode.insertBefore(div, formCard);
+    });
+  }
+  function addBite(){
+    const input = document.getElementById('biteInput');
+    const text = input.value.trim();
+    if(!text) return;
+    const saved = JSON.parse(localStorage.getItem('toolkit_customBites') || '[]');
+    saved.push(text);
+    localStorage.setItem('toolkit_customBites', JSON.stringify(saved));
+    input.value = '';
+    renderCustomBites();
+  }
+  renderCustomBites();
 </script>
 
 </body>
