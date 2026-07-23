@@ -449,10 +449,7 @@
   <button data-view="guides">Resource Guides</button>
   <button data-view="social">Wellness Bites</button>
   <button data-view="reflect">Reflection Journal</button>
-  <button data-view="reset">Reset &amp; Recharge</button>
-  <button data-view="workload">Workload &amp; Management</button>
-  <button data-view="emotional">Emotional Wellness</button>
-  <button data-view="planning">Resources &amp; Planning</button>
+  <button data-view="pathways">Pathways</button>
 </nav>
 
 <main>
@@ -474,10 +471,7 @@
       <div class="tile" data-view="guides"><span class="emoji">🗂️</span><h4>Resource Guides</h4><p>Printable checklists and planning templates.</p></div>
       <div class="tile" data-view="social"><span class="emoji">💬</span><h4>Wellness Bites</h4><p>Bite-sized, shareable reminders for tough days.</p></div>
       <div class="tile" data-view="reflect"><span class="emoji">🖊️</span><h4>Reflection Journal</h4><p>Optional prompts to process what you're noticing.</p></div>
-      <div class="tile" data-view="reset"><span class="emoji">🔋</span><h4>Reset &amp; Recharge</h4><p>Practices for rest, recovery, and protecting your energy.</p></div>
-      <div class="tile" data-view="workload"><span class="emoji">🗓️</span><h4>Workload &amp; Management</h4><p>Support for boundaries, time, and workload pressure.</p></div>
-      <div class="tile" data-view="emotional"><span class="emoji">💚</span><h4>Emotional Wellness</h4><p>Support for feeling connected, capable, and steady.</p></div>
-      <div class="tile" data-view="planning"><span class="emoji">🧭</span><h4>Resources &amp; Planning</h4><p>Professional support resources for when stress is high.</p></div>
+      <div class="tile" data-view="pathways"><span class="emoji">🧭</span><h4>Pathways</h4><p>Reset &amp; recharge, workload, emotional wellness, or professional resources.</p></div>
     </div>
     <div class="destress-strip">
       <h4>Need a two-minute breather first?</h4>
@@ -948,8 +942,31 @@
     </div>
   </section>
 
+  <!-- PATHWAYS HUB -->
+  <section id="pathways" class="view">
+    <h2 class="section-title">Pathways</h2>
+    <p class="section-sub">Pick a pathway based on what's driving your stress right now, or use the self-assessment for a recommendation.</p>
+    <div class="grid" id="pathwaysGrid">
+      <div class="tile" data-view="reset"><span class="emoji">🔋</span><h4>Reset &amp; Recharge</h4><p>Practices for rest, recovery, and protecting your energy.</p></div>
+      <div class="tile" data-view="workload"><span class="emoji">🗓️</span><h4>Workload &amp; Management</h4><p>Support for boundaries, time, and workload pressure.</p></div>
+      <div class="tile" data-view="emotional"><span class="emoji">💚</span><h4>Emotional Wellness</h4><p>Support for feeling connected, capable, and steady.</p></div>
+      <div class="tile" data-view="planning"><span class="emoji">🧭</span><h4>Resources &amp; Planning</h4><p>Professional support resources for when stress is high.</p></div>
+    </div>
+    <div class="destress-strip">
+      <h4>Need a two-minute breather first?</h4>
+      <div class="destress-links">
+        <a href="https://www.crayola.com/adult-coloring" target="_blank" rel="noopener">🎨 Free coloring page</a>
+        <a href="https://libbyapp.com" target="_blank" rel="noopener">📚 Free library e-books (Libby)</a>
+        <a href="https://www.smilingmind.com.au" target="_blank" rel="noopener">🧘 Free meditation app</a>
+        <a href="https://www.mindfulcoachingtools.com/free-tools/p/12-free-mental-health-motivational-poster-prints" target="_blank" rel="noopener">🖨️ Free printable posters</a>
+        <a href="https://resilienteducator.com/lifestyle/calming-yoga-poses/" target="_blank" rel="noopener">🧘‍♀️ Short yoga break</a>
+      </div>
+    </div>
+  </section>
+
   <!-- RESET & RECHARGE -->
   <section id="reset" class="view">
+    <a href="#" class="cite" onclick="showView('pathways'); return false;">← Back to Pathways</a>
     <h2 class="section-title">Reset &amp; Recharge</h2>
     <p class="section-sub">Practices for rest, recovery, and protecting your energy.</p>
     <img class="section-photo" src="https://images.pexels.com/photos/12716106/pexels-photo-12716106.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Teacher relaxing and taking a break outdoors">
@@ -971,6 +988,7 @@
 
   <!-- WORKLOAD & MANAGEMENT -->
   <section id="workload" class="view">
+    <a href="#" class="cite" onclick="showView('pathways'); return false;">← Back to Pathways</a>
     <h2 class="section-title">Workload &amp; Management</h2>
     <p class="section-sub">Support for boundaries, time, and workload pressure.</p>
     <img class="section-photo" src="https://images.pexels.com/photos/265005/pexels-photo-265005.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Organized desk with a planner">
@@ -992,6 +1010,7 @@
 
   <!-- EMOTIONAL WELLNESS -->
   <section id="emotional" class="view">
+    <a href="#" class="cite" onclick="showView('pathways'); return false;">← Back to Pathways</a>
     <h2 class="section-title">Emotional Wellness</h2>
     <p class="section-sub">Support for feeling connected, capable, and steady.</p>
     <img class="section-photo" src="https://images.pexels.com/photos/6135042/pexels-photo-6135042.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Colleagues supporting each other in conversation">
@@ -1013,6 +1032,7 @@
 
   <!-- RESOURCES & PLANNING -->
   <section id="planning" class="view">
+    <a href="#" class="cite" onclick="showView('pathways'); return false;">← Back to Pathways</a>
     <h2 class="section-title">Resources &amp; Planning</h2>
     <p class="section-sub">For the days stress feels like too much to manage alone. These resources connect you with real, professional support.</p>
     <img class="section-photo" src="https://images.pexels.com/photos/7176302/pexels-photo-7176302.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Person receiving support in a counseling conversation">
@@ -1076,6 +1096,7 @@
   }
   navButtons.forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
   document.querySelectorAll('#homeGrid .tile').forEach(t => t.addEventListener('click', () => showView(t.dataset.view)));
+  document.querySelectorAll('#pathwaysGrid .tile').forEach(t => t.addEventListener('click', () => showView(t.dataset.view)));
 
   // Self-assessment scoring
   function scoreQuiz(){
